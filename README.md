@@ -662,28 +662,6 @@ docs/
 
 ### 🏠 Home
 
-![Home Screenshot](docs/screenshots/home.png)
-
-### 🔎 Search
-
-![Search Screenshot](docs/screenshots/search.png)
-
-### 🧭 Discover
-
-![Discover Screenshot](docs/screenshots/discover.png)
-
-### 📚 Library
-
-![Library Screenshot](docs/screenshots/library.png)
-
-### 🎵 Playlist
-
-![Playlist Screenshot](docs/screenshots/playlist.png)
-
-### 🎧 Player
-
-![Player Screenshot](docs/screenshots/player.png)
-
 ---
 
 ## 🗺️ Roadmap
