@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* ---------------------------------------------------------------------
+   Design tokens — "Signal Chain" studio-console identity.
+
+   The app is framed as an audio patch bay / mixing console rather than a
+   generic music-app dashboard. Palette is a warm graphite (not pure black —
+   like brushed hardware casing under low light), with Spotify green reserved
+   as a true LED-style indicator accent, and a tape-amber secondary accent
+   for warmth so the whole UI doesn't read as "green on black".
+------------------------------------------------------------------------ */
+@theme {
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-console-950: #0e1210;
+  --color-console-900: #141917;
+  --color-console-800: #1c2422;
+  --color-console-700: #28322f;
+  --color-console-600: #3a4744;
+  --color-console-500: #566461;
+  --color-console-400: #7c8b87;
+  --color-console-300: #a8b5b1;
+  --color-console-200: #d1dad7;
+  --color-console-100: #eef2f0;
+
+  --color-signal-500: #1ed760;
+  --color-signal-600: #17b350;
+  --color-signal-400: #5ce88a;
+
+  --color-tape-500: #e8973a;
+  --color-tape-600: #c97a22;
+  --color-tape-400: #f2b565;
+
+  --color-alert-500: #e8543a;
+
+  --shadow-console: 0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 24px -8px rgba(0,0,0,0.6);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-console-950);
+  color: var(--color-console-100);
+  font-family: var(--font-body);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(30, 215, 96, 0.06), transparent),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+}
+
+/* Brushed-metal panel texture used behind console-style surfaces */
+.panel-brushed {
+  background-color: var(--color-console-900);
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, transparent 1px, transparent 2px);
+  border: 1px solid var(--color-console-700);
+  box-shadow: var(--shadow-console);
+}
+
+.panel-inset {
+  background-color: var(--color-console-950);
+  border: 1px solid var(--color-console-800);
+  box-shadow: 0 1px 0 0 rgba(0,0,0,0.4) inset, 0 -1px 0 0 rgba(255,255,255,0.02) inset;
+}
+
+/* LED-style status dot */
+.led {
+  position: relative;
+  border-radius: 9999px;
+}
+.led--on {
+  background: var(--color-signal-500);
+  box-shadow: 0 0 6px 1px color-mix(in oklab, var(--color-signal-500) 70%, transparent), 0 0 1px rgba(0,0,0,0.4) inset;
+}
+.led--off {
+  background: var(--color-console-600);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-signal-500) 35%, transparent);
+}
+
+/* Thin, console-appropriate scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-console-600) transparent;
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--color-console-600); border-radius: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+@keyframes vu-bounce {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+.animate-vu {
+  animation: vu-bounce 0.9s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-vu { animation: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
