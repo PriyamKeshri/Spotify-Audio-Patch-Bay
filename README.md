@@ -816,7 +816,7 @@ This project is **not affiliated with, endorsed by, or sponsored by Spotify**.
 
 ## 👨‍💻 Author
 
-### Your Name
+### Priyam Keshri
 
 **Frontend Developer | React | TypeScript**
 
