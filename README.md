@@ -46,17 +46,22 @@ React Component
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-
-cd YOUR_REPOSITORY
+git clone https://github.com/PriyamKeshri/Spotify-Audio-Patch-Bay.git
 ```
 
 ---
 
-### 2. Install Dependencies
+### Install Dependencies
 
 ```bash
 npm install
+```
+
+### Run it locally
+
+```
+npm run dev
+
 ```
 
 ---
