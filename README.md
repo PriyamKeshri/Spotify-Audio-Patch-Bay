@@ -88,3 +88,7 @@ src/
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Author
+
+**Priyam Keshri**
