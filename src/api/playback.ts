@@ -1,5 +1,5 @@
 import { spotifyClient } from './client';
-import type { RepeatState, SpotifyDevice, SpotifyPlaybackState, SpotifyQueue } from '../types/spotify';
+import type { RepeatState, SpotifyDevice, SpotifyPlaybackState } from '../types/spotify';
 
 // Playback endpoints return 204 No Content on success for most write actions,
 // and 204 (not 200 + null) from GET /me/player when nothing is active —
@@ -13,11 +13,6 @@ export async function getPlaybackState(): Promise<SpotifyPlaybackState | null> {
 export async function getAvailableDevices(): Promise<SpotifyDevice[]> {
   const { data } = await spotifyClient.get<{ devices: SpotifyDevice[] }>('/me/player/devices');
   return data.devices;
-}
-
-export async function getQueue(): Promise<SpotifyQueue> {
-  const { data } = await spotifyClient.get<SpotifyQueue>('/me/player/queue');
-  return data;
 }
 
 interface PlayOptions {

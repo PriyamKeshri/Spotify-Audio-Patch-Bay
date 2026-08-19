@@ -45,43 +45,11 @@ export async function getSavedAlbums(limit = 20, offset = 0): Promise<Paginated<
   return data;
 }
 
-export async function saveAlbums(ids: string[]): Promise<void> {
-  await spotifyClient.put('/me/library', null, {
-    params: { uris: ids.map((id) => `spotify:album:${id}`).join(',') },
-  });
-}
-
-export async function removeSavedAlbums(ids: string[]): Promise<void> {
-  await spotifyClient.delete('/me/library', {
-    params: { uris: ids.map((id) => `spotify:album:${id}`).join(',') },
-  });
-}
-
 export async function getFollowedArtists(limit = 20, after?: string): Promise<{
   artists: Paginated<SpotifyArtist> & { cursors: { after: string | null } };
 }> {
   const { data } = await spotifyClient.get('/me/following', {
     params: { type: 'artist', limit, after },
-  });
-  return data;
-}
-
-export async function followArtists(ids: string[]): Promise<void> {
-  await spotifyClient.put('/me/library', null, {
-    params: { uris: ids.map((id) => `spotify:artist:${id}`).join(',') },
-  });
-}
-
-export async function unfollowArtists(ids: string[]): Promise<void> {
-  await spotifyClient.delete('/me/library', {
-    params: { uris: ids.map((id) => `spotify:artist:${id}`).join(',') },
-  });
-}
-
-export async function checkFollowingArtists(ids: string[]): Promise<boolean[]> {
-  if (ids.length === 0) return [];
-  const { data } = await spotifyClient.get<boolean[]>('/me/library/contains', {
-    params: { uris: ids.map((id) => `spotify:artist:${id}`).join(',') },
   });
   return data;
 }

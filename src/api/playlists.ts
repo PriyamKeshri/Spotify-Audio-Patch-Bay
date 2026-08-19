@@ -68,10 +68,6 @@ export async function updatePlaylistDetails(
   });
 }
 
-export async function addTracksToPlaylist(playlistId: string, uris: string[]): Promise<void> {
-  await spotifyClient.post(`/playlists/${playlistId}/items`, { uris });
-}
-
 export async function removeTracksFromPlaylist(playlistId: string, uris: string[]): Promise<void> {
   await spotifyClient.delete(`/playlists/${playlistId}/items`, {
     data: { tracks: uris.map((uri) => ({ uri })) },

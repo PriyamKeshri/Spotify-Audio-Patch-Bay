@@ -195,13 +195,3 @@ export function useAvailableDevices() {
 
   return query;
 }
-
-export function useQueue() {
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  return useQuery({
-    queryKey: ['queue'],
-    queryFn: playbackApi.getQueue,
-    enabled: isAuthenticated,
-    refetchInterval: POLL_INTERVAL_MS * 2,
-  });
-}

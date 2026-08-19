@@ -116,11 +116,6 @@ export interface SpotifyPlaybackState {
   };
 }
 
-export interface SpotifyQueue {
-  currently_playing: SpotifyTrack | null;
-  queue: SpotifyTrack[];
-}
-
 export interface Paginated<T> {
   items: T[];
   total: number;

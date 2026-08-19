@@ -36,17 +36,6 @@ export function useCreatePlaylist(userId: string | undefined) {
   });
 }
 
-export function useAddTracksToPlaylist(playlistId: string) {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (uris: string[]) => playlistsApi.addTracksToPlaylist(playlistId, uris),
-    onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ['playlist-tracks', playlistId] });
-      void queryClient.invalidateQueries({ queryKey: ['playlist', playlistId] });
-    },
-  });
-}
-
 export function useRemoveTracksFromPlaylist(playlistId: string) {
   const queryClient = useQueryClient();
   return useMutation({

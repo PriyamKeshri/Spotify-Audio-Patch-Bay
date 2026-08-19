@@ -61,19 +61,3 @@ export function useToggleSavedTrack() {
 
   return { save: save.mutate, remove: remove.mutate };
 }
-
-export function useToggleFollowArtist() {
-  const queryClient = useQueryClient();
-
-  const follow = useMutation({
-    mutationFn: (id: string) => libraryApi.followArtists([id]),
-    onSuccess: () => void queryClient.invalidateQueries({ queryKey: ['followed-artists'] }),
-  });
-
-  const unfollow = useMutation({
-    mutationFn: (id: string) => libraryApi.unfollowArtists([id]),
-    onSuccess: () => void queryClient.invalidateQueries({ queryKey: ['followed-artists'] }),
-  });
-
-  return { follow: follow.mutate, unfollow: unfollow.mutate };
-}
