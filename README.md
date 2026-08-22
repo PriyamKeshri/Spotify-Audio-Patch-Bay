@@ -25,15 +25,15 @@ Web Audio API — just a console that controls the signal chain from outside it.
 
 ## Contents
 
-- [Features](#-features)
-- [Requirements](#-requirements)
-- [Setup](#-setup)
-- [Scopes requested](#-scopes-requested)
-- [Architecture](#-architecture)
-- [Known limitations](#-known-limitations)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Setup](#setup)
+- [Scopes requested](#scopes-requested)
+- [Architecture](#architecture)
+- [Known limitations](#known-limitations)
 - [License](#license)
 
-## ✨ Features
+## Features
 
 | | |
 |---|---|
@@ -44,7 +44,7 @@ Web Audio API — just a console that controls the signal chain from outside it.
 | **Live state** | Playback polled every 3s, with a smooth client-side ticker between polls so the progress bar never visibly jumps |
 | **Signal Monitor** | An in-app debug panel — live auth status, poll state, and a request log — toggled from the header |
 
-## 📋 Requirements
+## Requirements
 
 - **Node 18+**
 - **A Spotify account.** Playback control (play/pause/seek/volume/etc.) requires
@@ -53,7 +53,7 @@ Web Audio API — just a console that controls the signal chain from outside it.
   manage their library.
 - **A Spotify Developer app** — free, instant setup, covered below.
 
-## ⚙️ Setup
+## Setup
 
 ### 1 · Create a Spotify app
 
@@ -92,7 +92,7 @@ npm run dev
 Open the URL Vite prints (`http://127.0.0.1:5173`) and click **Connect with
 Spotify**.
 
-## 🔐 Scopes requested
+## Scopes requested
 
 Only the scopes the app actually uses, grouped by feature: playback
 state/control, recently played, library read/modify, playlist read/modify
@@ -100,7 +100,7 @@ state/control, recently played, library read/modify, playlist read/modify
 See [`src/auth/config.ts`](src/auth/config.ts) for the exact list — Spotify
 shows every one of these on the consent screen, so it's kept minimal.
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 src/
@@ -144,7 +144,7 @@ if the refresh itself fails.
 
 </details>
 
-## ⚠️ Known limitations
+## Known limitations
 
 - Spotify's `/recommendations` and several endpoints are subject to rate
   limits; the client surfaces `429` responses with a `Retry-After` value
